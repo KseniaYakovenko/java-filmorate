@@ -1,29 +1,27 @@
 package ru.yandex.practicum.filmorate.model;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 import ru.yandex.practicum.filmorate.validator.Marker;
-import ru.yandex.practicum.filmorate.validator.ReleaseDateConstraint;
 
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @Validated
-public class Film {
+public class User {
     @NotNull(groups = Marker.OnUpdate.class)
     Long id;
-    @NotBlank
+    @Email
+    String email;
+    @Pattern(regexp = "\\S+")
+    String login;
     String name;
-    @Size(max = 200)
-    String description;
-    @ReleaseDateConstraint
-    LocalDate releaseDate;
-    @Positive
-    Integer duration;
+    @Past
+    LocalDate birthday;
 }
