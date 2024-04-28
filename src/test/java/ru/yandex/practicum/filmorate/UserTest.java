@@ -14,13 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
     private static final Validator validator;
+
     static {
         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         validator = validatorFactory.usingContext().getValidator();
     }
 
     @Test
-    void validateEmptyLogin(){
+    void validateEmptyLogin() {
         String emptyLogin = "";
         User user = new User(1L, "e@mail", emptyLogin, "name", LocalDate.now().minusDays(1L));
         Set<ConstraintViolation<User>> violation = validator.validate(user);
@@ -28,7 +29,7 @@ public class UserTest {
     }
 
     @Test
-    void validateFailLogin(){
+    void validateFailLogin() {
         String loginWithSpace = "login login";
         User user = new User(1L, "e@mail", loginWithSpace, "name", LocalDate.now().minusDays(1L));
         Set<ConstraintViolation<User>> violation = validator.validate(user);
@@ -36,7 +37,7 @@ public class UserTest {
     }
 
     @Test
-    void validateNotEmptyLogin(){
+    void validateNotEmptyLogin() {
         String notEmptyLogin = "login";
         User user = new User(1L, "e@mail", notEmptyLogin, "name", LocalDate.now().minusDays(1L));
         Set<ConstraintViolation<User>> violation = validator.validate(user);
@@ -44,7 +45,7 @@ public class UserTest {
     }
 
     @Test
-    void validateEmail(){
+    void validateEmail() {
         String email = "email@yandex.ru";
         User user = new User(1L, email, "notEmptyLogin", "name", LocalDate.now().minusDays(1L));
         Set<ConstraintViolation<User>> violation = validator.validate(user);
@@ -52,17 +53,12 @@ public class UserTest {
     }
 
     @Test
-    void validateFailEmail(){
+    void validateFailEmail() {
         String email = "yandex.ru";
         User user = new User(1L, email, "notEmptyLogin", "name", LocalDate.now().minusDays(1L));
         Set<ConstraintViolation<User>> violation = validator.validate(user);
         assertEquals(1, violation.size());
     }
-
-
-
-
-
 
 
 }

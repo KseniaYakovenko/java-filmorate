@@ -14,13 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FilmTest {
     private static final Validator validator;
+
     static {
         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         validator = validatorFactory.usingContext().getValidator();
     }
 
     @Test
-    void validateEmptyName(){
+    void validateEmptyName() {
         String emptyName = "";
         Film film = new Film(1L, emptyName, "description", LocalDate.now(), 5);
         Set<ConstraintViolation<Film>> violation = validator.validate(film);
@@ -28,7 +29,7 @@ public class FilmTest {
     }
 
     @Test
-    void validateNotEmptyName(){
+    void validateNotEmptyName() {
         String notEmptyName = "name";
         Film film = new Film(1L, notEmptyName, "description", LocalDate.now(), 5);
         Set<ConstraintViolation<Film>> violation = validator.validate(film);
@@ -36,23 +37,23 @@ public class FilmTest {
     }
 
     @Test
-    void validateFailReleaseDate(){
-        LocalDate failReleaseDate = LocalDate.of(1000, 1,1);
+    void validateFailReleaseDate() {
+        LocalDate failReleaseDate = LocalDate.of(1000, 1, 1);
         Film film = new Film(1L, "name", "description", failReleaseDate, 5);
         Set<ConstraintViolation<Film>> violation = validator.validate(film);
         assertEquals(1, violation.size());
     }
 
     @Test
-    void validateReleaseDate(){
-        LocalDate failReleaseDate = LocalDate.of(2000, 1,1);
+    void validateReleaseDate() {
+        LocalDate failReleaseDate = LocalDate.of(2000, 1, 1);
         Film film = new Film(1L, "name", "description", failReleaseDate, 5);
         Set<ConstraintViolation<Film>> violation = validator.validate(film);
         assertTrue(violation.isEmpty());
     }
 
     @Test
-    void validateFailDuration(){
+    void validateFailDuration() {
         Integer duration = -100;
         Film film = new Film(1L, "name", "description", LocalDate.now(), duration);
         Set<ConstraintViolation<Film>> violation = validator.validate(film);
@@ -60,14 +61,12 @@ public class FilmTest {
     }
 
     @Test
-    void validateDuration(){
+    void validateDuration() {
         Integer duration = 100;
         Film film = new Film(1L, "name", "description", LocalDate.now(), duration);
         Set<ConstraintViolation<Film>> violation = validator.validate(film);
         assertTrue(violation.isEmpty());
     }
-
-
 
 
 }
