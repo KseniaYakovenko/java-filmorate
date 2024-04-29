@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class FilmService {
-    FilmRepository filmRepository;
+    private final FilmRepository filmRepository;
 
     public FilmService(FilmRepository filmRepository) {
         this.filmRepository = filmRepository;

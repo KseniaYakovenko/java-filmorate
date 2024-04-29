@@ -30,11 +30,10 @@ public class UserRepository {
     public User update(User user) {
         Long id = user.getId();
         User oldUser = users.get(id);
-        if (oldUser != null) {
-            users.put(id, user);
-        } else {
+        if (oldUser == null) {
             throw new NotFoundException("Нет пользователя с id = " + id);
         }
+        users.put(id, user);
         return users.get(id);
     }
 }

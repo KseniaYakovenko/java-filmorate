@@ -30,11 +30,10 @@ public class FilmRepository {
     public Film update(Film film) {
         Long id = film.getId();
         Film oldFilm = films.get(id);
-        if (oldFilm != null) {
-            films.put(id, film);
-        } else {
+        if (oldFilm == null) {
             throw new NotFoundException("Нет фильма с id = " + id);
         }
+        films.put(id, film);
         return films.get(id);
     }
 }
