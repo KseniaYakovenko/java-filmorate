@@ -1,39 +1,21 @@
 package ru.yandex.practicum.filmorate.repository;
 
-import org.springframework.stereotype.Repository;
-import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.model.Film;
 
-import java.util.HashMap;
 import java.util.List;
 
-@Repository
-public class FilmRepository {
-    private final HashMap<Long, Film> films = new HashMap<>();
-    private Long generatorId = 0L;
+public interface FilmRepository {
+    List<Film> getAll();
 
-    public Long generateId() {
-        return ++generatorId;
-    }
+    Film save(Film film);
 
-    public List<Film> getAll() {
-        return films.values().stream().toList();
-    }
+    Film update(Film film);
 
-    public Film save(Film film) {
-        Long filmId = generateId();
-        film.setId(filmId);
-        films.put(filmId, film);
-        return films.get(filmId);
-    }
+    void addLike(long filmId, long userId);
 
-    public Film update(Film film) {
-        Long id = film.getId();
-        Film oldFilm = films.get(id);
-        if (oldFilm == null) {
-            throw new NotFoundException("Нет фильма с id = " + id);
-        }
-        films.put(id, film);
-        return films.get(id);
-    }
+    void deleteLike(long filmId, long userId);
+
+    List<Film> getPopular(Integer count);
+
+    void checkExistFilm(Long filmId);
 }
