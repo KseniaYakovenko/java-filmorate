@@ -11,7 +11,7 @@ import lombok.Setter;
 public class ErrorResponse {
     private String message;
     @JsonIgnore
-    private String Stacktrace;
+    private String stacktrace;
 
     public ErrorResponse(String message) {
         this.message = message;
