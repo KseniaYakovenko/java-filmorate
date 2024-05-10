@@ -11,7 +11,7 @@ import java.util.List;
 public class FilmService {
     private final FilmRepository filmRepository;
     private final UserRepository userRepository;
-    private final Integer DEFAULT_POPULAR_FILM_COUNT = 10;
+    private static final Integer DEFAULT_POPULAR_FILM_COUNT = 10;
 
     public FilmService(FilmRepository filmRepository, UserRepository userRepository) {
         this.filmRepository = filmRepository;
