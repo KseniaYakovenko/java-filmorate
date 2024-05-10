@@ -64,7 +64,7 @@ public class UserController {
 
     @GetMapping("/{userId}/friends")
     Set<User> getFriends(@PathVariable long userId) {
-        log.info("getFriends for user: {} - Started",userId);
+        log.info("getFriends for user: {} - Started", userId);
         log.info("getFriends for user: {} - Finished", userId);
         return userService.getFriends(userId);
     }
@@ -78,7 +78,7 @@ public class UserController {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponse handleException(final NotFoundException e){
+    public ErrorResponse handleException(final NotFoundException e) {
         log.info("Error", e);
         ErrorResponse errorResponse = new ru.yandex.practicum.filmorate.controller.ErrorResponse(e.getMessage());
         StringWriter sw = new StringWriter();

@@ -70,7 +70,7 @@ public class FilmController {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponse handleException(final NotFoundException e){
+    public ErrorResponse handleException(final NotFoundException e) {
         log.info("Error", e);
         ErrorResponse errorResponse = new ru.yandex.practicum.filmorate.controller.ErrorResponse(e.getMessage());
         StringWriter sw = new StringWriter();
