@@ -62,7 +62,6 @@ public class InMemoryFilmRepository implements FilmRepository {
 
     @Override
     public List<Film> getPopular(Integer count) {
-
         LinkedList<Film> popFilms = new LinkedList<>();
         filmsLikesByUserIds.entrySet()
                 .stream()

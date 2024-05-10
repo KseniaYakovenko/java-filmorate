@@ -74,7 +74,7 @@ public class InMemoryUserRepository implements UserRepository {
     public Set<User> getCommonFriends(long userId, long otherUserId) {
         Set<Long> firstUserFriendIds = userFriendIds.get(userId);
         Set<Long> secondUserFriendIds = userFriendIds.get(otherUserId);
-        if (firstUserFriendIds == null || secondUserFriendIds == null)  {
+        if (firstUserFriendIds == null || secondUserFriendIds == null) {
             return Collections.emptySet();
         }
         firstUserFriendIds.retainAll(secondUserFriendIds);
@@ -83,8 +83,8 @@ public class InMemoryUserRepository implements UserRepository {
         return commonFriends;
     }
 
-    public void checkExistUser(Long id){
-        if(!users.containsKey(id)){
+    public void checkExistUser(Long id) {
+        if (!users.containsKey(id)) {
             throw new NotFoundException("Нет пользователя с id = " + id);
         }
     }
