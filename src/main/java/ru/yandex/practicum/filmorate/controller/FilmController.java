@@ -25,13 +25,13 @@ public class FilmController {
     }
 
     @GetMapping()
-    List<Film> getAllFilms() {
+    public List<Film> getAllFilms() {
         return filmService.getAll();
     }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    Film saveFilm(@RequestBody @Valid Film film) {
+    public Film saveFilm(@RequestBody @Valid Film film) {
         log.info("Update film: {} - Started", film);
         Film savedFilm = filmService.save(film);
         log.info("Update film: {} - Finished", savedFilm);
@@ -39,7 +39,7 @@ public class FilmController {
     }
 
     @PutMapping()
-    Film updateFilm(@RequestBody @Validated(Marker.OnUpdate.class) Film film) {
+    public Film updateFilm(@RequestBody @Validated(Marker.OnUpdate.class) Film film) {
         log.info("Update film: {} - Started", film);
         Film updatedFilm = filmService.update(film);
         log.info("Update film: {} - Finished", updatedFilm);
@@ -47,21 +47,21 @@ public class FilmController {
     }
 
     @PutMapping("/{filmId}/like/{userId}")
-    void addLike(@PathVariable long filmId, @PathVariable long userId) {
+    public void addLike(@PathVariable long filmId, @PathVariable long userId) {
         log.info("addLike for film id: {} by user: {} - Started", filmId, userId);
         filmService.addLike(userId, filmId);
         log.info("addLike for film id: {} by user: {} - Finished", filmId, userId);
     }
 
     @DeleteMapping("/{filmId}/like/{userId}")
-    void deleteLike(@PathVariable long filmId, @PathVariable long userId) {
+    public void deleteLike(@PathVariable long filmId, @PathVariable long userId) {
         log.info("deleteLike for film id: {} by user: {} - Started", filmId, userId);
         filmService.deleteLike(userId, filmId);
         log.info("deleteLike for film id: {} by user: {} - Finished", filmId, userId);
     }
 
     @GetMapping("/popular")
-    List<Film> getPopular(@RequestParam Integer count) {
+    public List<Film> getPopular(@RequestParam Integer count) {
         log.info("getPopular film - count={} - Started", count);
         List<Film> films = filmService.getPopular(count);
         log.info("getPopular film - count={} - Finished", count);

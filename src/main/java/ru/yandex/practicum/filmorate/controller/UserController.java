@@ -27,13 +27,13 @@ public class UserController {
     }
 
     @GetMapping()
-    List<User> getAllUser() {
+    public List<User> getAllUser() {
         return userService.getAll();
     }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    User saveUser(@RequestBody @Valid User user) {
+    public User saveUser(@RequestBody @Valid User user) {
         log.info("Create user: {} - Started", user);
         User savedUser = userService.save(user);
         log.info("Create user: {} - Finished", savedUser);
@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PutMapping()
-    User updateUser(@RequestBody @Validated(Marker.OnUpdate.class) User user) {
+    public User updateUser(@RequestBody @Validated(Marker.OnUpdate.class) User user) {
         log.info("Update user: {} - Started", user);
         User updatedUser = userService.update(user);
         log.info("Update user: {} - Finished", updatedUser);
@@ -49,28 +49,28 @@ public class UserController {
     }
 
     @PutMapping("/{userId}/friends/{friendId}")
-    void addFriend(@PathVariable long userId, @PathVariable long friendId) {
+    public void addFriend(@PathVariable long userId, @PathVariable long friendId) {
         log.info("addFriend with id: {} for user: {} - Started", friendId, userId);
         userService.addFriend(userId, friendId);
         log.info("addFriend with id: {} for user: {} - Finished", friendId, userId);
     }
 
     @DeleteMapping("/{userId}/friends/{friendId}")
-    void deleteFriend(@PathVariable long userId, @PathVariable long friendId) {
+    public void deleteFriend(@PathVariable long userId, @PathVariable long friendId) {
         log.info("deleteFriend with id: {} for user: {} - Started", friendId, userId);
         userService.deleteFriend(userId, friendId);
         log.info("deleteFriend with id: {} for user: {} - Finished", friendId, userId);
     }
 
     @GetMapping("/{userId}/friends")
-    Set<User> getFriends(@PathVariable long userId) {
+    public Set<User> getFriends(@PathVariable long userId) {
         log.info("getFriends for user: {} - Started", userId);
         log.info("getFriends for user: {} - Finished", userId);
         return userService.getFriends(userId);
     }
 
     @GetMapping("/{userId}/friends/common/{otherUserId}")
-    Set<User> getCommonFriends(@PathVariable long userId, @PathVariable long otherUserId) {
+    public Set<User> getCommonFriends(@PathVariable long userId, @PathVariable long otherUserId) {
         log.info("getCommonFriends for users: {}, {} - Started", userId, otherUserId);
         log.info("getCommonFriends for users: {}, {} - Finished", userId, otherUserId);
         return userService.getCommonFriends(userId, otherUserId);

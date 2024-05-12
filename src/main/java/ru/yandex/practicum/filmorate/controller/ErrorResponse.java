@@ -1,13 +1,9 @@
 package ru.yandex.practicum.filmorate.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Data
 public class ErrorResponse {
     private String message;
     @JsonIgnore
