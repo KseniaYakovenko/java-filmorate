@@ -36,9 +36,9 @@ public class UserService {
     }
 
     public void addFriend(long userId, long friendId) {
-        userRepository.checkExistUser(userId);
-        userRepository.checkExistUser(friendId);
         if (userId != friendId) {
+            userRepository.checkExistUser(userId);
+            userRepository.checkExistUser(friendId);
             userRepository.addFriend(userId, friendId);
         }
     }
@@ -50,13 +50,10 @@ public class UserService {
     }
 
     public Set<User> getFriends(long userId) {
-        userRepository.checkExistUser(userId);
         return userRepository.getFriends(userId);
     }
 
     public Set<User> getCommonFriends(long userId, long otherUserId) {
-        userRepository.checkExistUser(userId);
-        userRepository.checkExistUser(otherUserId);
         return userRepository.getCommonFriends(userId, otherUserId);
     }
 }

@@ -10,10 +10,10 @@ import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.service.UserService;
 import ru.yandex.practicum.filmorate.validator.Marker;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.List;
 import java.util.Set;
+
+import static ru.yandex.practicum.filmorate.controller.ErrorResponse.getErrorResponse;
 
 @Slf4j
 @RestController
@@ -79,12 +79,6 @@ public class UserController {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleException(final NotFoundException e) {
-        log.info("Error", e);
-        ErrorResponse errorResponse = new ru.yandex.practicum.filmorate.controller.ErrorResponse(e.getMessage());
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        e.printStackTrace(pw);
-        errorResponse.setStacktrace(pw.toString());
-        return errorResponse;
+        return getErrorResponse(e, log);
     }
 }
