@@ -1,4 +1,3 @@
-
 package ru.yandex.practicum.filmorate.validator;
 
 import jakarta.validation.ConstraintValidator;
@@ -17,8 +16,6 @@ public class GenreExistValidator implements ConstraintValidator<GenreConstraint,
 
     @Override
     public boolean isValid(List<Genre> genres, ConstraintValidatorContext constraintValidatorContext) {
-        if (genres != null) {
-            return genreService.checkExistGenres(genres);
-        } else return true;
+        return genres == null || genreService.checkExistGenres(genres);
     }
 }

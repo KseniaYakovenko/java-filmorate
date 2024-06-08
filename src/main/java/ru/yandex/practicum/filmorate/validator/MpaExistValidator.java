@@ -1,10 +1,9 @@
-
 package ru.yandex.practicum.filmorate.validator;
 
-        import jakarta.validation.ConstraintValidator;
-        import jakarta.validation.ConstraintValidatorContext;
-        import ru.yandex.practicum.filmorate.model.Mpa;
-        import ru.yandex.practicum.filmorate.service.MpaService;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+import ru.yandex.practicum.filmorate.model.Mpa;
+import ru.yandex.practicum.filmorate.service.MpaService;
 
 public class MpaExistValidator implements ConstraintValidator<MpaConstraint, Mpa> {
     private final MpaService mpaService;
@@ -15,8 +14,6 @@ public class MpaExistValidator implements ConstraintValidator<MpaConstraint, Mpa
 
     @Override
     public boolean isValid(Mpa mpa, ConstraintValidatorContext constraintValidatorContext) {
-        if (mpa != null) {
-            return mpaService.checkExistMpa(mpa);
-        } else return true;
+        return mpa == null || mpaService.checkExistMpa(mpa);
     }
 }

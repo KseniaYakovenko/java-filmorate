@@ -22,23 +22,23 @@ import java.util.Set;
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class JdbcUserRepositoryTest {
 
-    private static final String TEST_USER_1_E_MAIL = "TEST_USER_1_E_MAIL";
-    private static final String TEST_USER_1_LOGIN = "TEST_USER_1_LOGIN ";
-    private static final String TEST_USER_1_NAME = "TEST_USER_1_NAME";
-    private static final LocalDate TEST_USER_1_BIRTHDAY = LocalDate.of(2001, 1, 1);
+    static final String TEST_USER_1_E_MAIL = "TEST_USER_1_E_MAIL";
+    static final String TEST_USER_1_LOGIN = "TEST_USER_1_LOGIN ";
+    static final String TEST_USER_1_NAME = "TEST_USER_1_NAME";
+    static final LocalDate TEST_USER_1_BIRTHDAY = LocalDate.of(2001, 1, 1);
 
-    private static final String TEST_USER_2_E_MAIL = "TEST_USER_2_E_MAIL";
-    private static final String TEST_USER_2_LOGIN = "TEST_USER_2_LOGIN ";
-    private static final String TEST_USER_2_NAME = "TEST_USER_2_NAME";
-    private static final LocalDate TEST_USER_2_BIRTHDAY = LocalDate.of(2002, 2, 2);
+    static final String TEST_USER_2_E_MAIL = "TEST_USER_2_E_MAIL";
+    static final String TEST_USER_2_LOGIN = "TEST_USER_2_LOGIN ";
+    static final String TEST_USER_2_NAME = "TEST_USER_2_NAME";
+    static final LocalDate TEST_USER_2_BIRTHDAY = LocalDate.of(2002, 2, 2);
 
-    private static final String TEST_USER_3_E_MAIL = "TEST_USER_3_E_MAIL";
-    private static final String TEST_USER_3_LOGIN = "TEST_USER_3_LOGIN ";
-    private static final String TEST_USER_3_NAME = "TEST_USER_3_NAME";
-    private static final LocalDate TEST_USER_3_BIRTHDAY = LocalDate.of(2003, 3, 3);
+    static final String TEST_USER_3_E_MAIL = "TEST_USER_3_E_MAIL";
+    static final String TEST_USER_3_LOGIN = "TEST_USER_3_LOGIN ";
+    static final String TEST_USER_3_NAME = "TEST_USER_3_NAME";
+    static final LocalDate TEST_USER_3_BIRTHDAY = LocalDate.of(2003, 3, 3);
 
 
-    private final UserRepository userRepository;
+    final UserRepository userRepository;
 
     @Test
     public void testSaveAndGetAllUser() {

@@ -24,37 +24,37 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class JdbcFilmRepositoryTest {
 
-    private static final Long TEST_USER_1_ID = 1L;
-    private static final Long TEST_USER_2_ID = 2L;
+    static final Long TEST_USER_1_ID = 1L;
+    static final Long TEST_USER_2_ID = 2L;
 
-    private static final Long TEST_MPA_ID = 1L;
-    private static final String TEST_MPA_NAME = "TEST_G";
+    static final Long TEST_MPA_ID = 1L;
+    static final String TEST_MPA_NAME = "TEST_G";
 
-    private static final Long TEST_GENRE_1_ID = 1L;
-    private static final String TEST_GENRE_1_NAME = "TEST_Комедия";
+    static final Long TEST_GENRE_1_ID = 1L;
+    static final String TEST_GENRE_1_NAME = "TEST_Комедия";
 
-    private static final Long TEST_GENRE_2_ID = 2L;
-    private static final String TEST_GENRE_2_NAME = "TEST_Драма";
+    static final Long TEST_GENRE_2_ID = 2L;
+    static final String TEST_GENRE_2_NAME = "TEST_Драма";
 
-    private static final Long TEST_1_FILM_ID = 1L;
-    private static final String TEST_1_FILM_NAME = "TEST_1_FILM_NAME";
-    private static final String TEST_1_FILM_DESCRIPTION = "TEST_1_FILM_DESCRIPTION";
-    private static final LocalDate TEST_1_FILM_RELEASE_DATE = LocalDate.of(2001, 1, 1);
-    private static final Integer TEST_1_FILM_DURATION = 111;
+    static final Long TEST_1_FILM_ID = 1L;
+    static final String TEST_1_FILM_NAME = "TEST_1_FILM_NAME";
+    static final String TEST_1_FILM_DESCRIPTION = "TEST_1_FILM_DESCRIPTION";
+    static final LocalDate TEST_1_FILM_RELEASE_DATE = LocalDate.of(2001, 1, 1);
+    static final Integer TEST_1_FILM_DURATION = 111;
 
-    private static final Long TEST_2_FILM_ID = 2L;
-    private static final String TEST_2_FILM_NAME = "TEST_2_FILM_NAME";
-    private static final String TEST_2_FILM_DESCRIPTION = "TEST_2_FILM_DESCRIPTION";
-    private static final LocalDate TEST_2_FILM_RELEASE_DATE = LocalDate.of(2002, 2, 2);
-    private static final Integer TEST_2_FILM_DURATION = 222;
+    static final Long TEST_2_FILM_ID = 2L;
+    static final String TEST_2_FILM_NAME = "TEST_2_FILM_NAME";
+    static final String TEST_2_FILM_DESCRIPTION = "TEST_2_FILM_DESCRIPTION";
+    static final LocalDate TEST_2_FILM_RELEASE_DATE = LocalDate.of(2002, 2, 2);
+    static final Integer TEST_2_FILM_DURATION = 222;
 
-    private static final Long TEST_3_FILM_ID = 3L;
-    private static final String TEST_3_FILM_NAME = "TEST_3_FILM_NAME";
-    private static final String TEST_3_FILM_DESCRIPTION = "TEST_3_FILM_DESCRIPTION";
-    private static final LocalDate TEST_3_FILM_RELEASE_DATE = LocalDate.of(2003, 3, 3);
-    private static final Integer TEST_3_FILM_DURATION = 333;
+    static final Long TEST_3_FILM_ID = 3L;
+    static final String TEST_3_FILM_NAME = "TEST_3_FILM_NAME";
+    static final String TEST_3_FILM_DESCRIPTION = "TEST_3_FILM_DESCRIPTION";
+    static final LocalDate TEST_3_FILM_RELEASE_DATE = LocalDate.of(2003, 3, 3);
+    static final Integer TEST_3_FILM_DURATION = 333;
 
-    private final FilmRepository filmRepository;
+    final FilmRepository filmRepository;
 
     @Test
     public void testFindFilmById() {
