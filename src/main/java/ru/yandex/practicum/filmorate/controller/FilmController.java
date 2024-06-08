@@ -10,9 +10,9 @@ import ru.yandex.practicum.filmorate.model.Film;
 import ru.yandex.practicum.filmorate.service.FilmService;
 import ru.yandex.practicum.filmorate.validator.Marker;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.List;
+
+import static ru.yandex.practicum.filmorate.controller.ErrorResponse.getErrorResponse;
 
 @Slf4j
 @RestController
@@ -29,12 +29,17 @@ public class FilmController {
         return filmService.getAll();
     }
 
+    @GetMapping("/{filmId}")
+    public Film getFilmById(@PathVariable long filmId) {
+        return filmService.getFilmByID(filmId);
+    }
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public Film saveFilm(@RequestBody @Valid Film film) {
-        log.info("Update film: {} - Started", film);
+        log.info("Save film: {} - Started", film);
         Film savedFilm = filmService.save(film);
-        log.info("Update film: {} - Finished", savedFilm);
+        log.info("Save film: {} - Finished", savedFilm);
         return savedFilm;
     }
 
@@ -71,12 +76,6 @@ public class FilmController {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleException(final NotFoundException e) {
-        log.info("Error", e);
-        ErrorResponse errorResponse = new ru.yandex.practicum.filmorate.controller.ErrorResponse(e.getMessage());
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        e.printStackTrace(pw);
-        errorResponse.setStacktrace(pw.toString());
-        return errorResponse;
+        return getErrorResponse(e, log);
     }
 }
